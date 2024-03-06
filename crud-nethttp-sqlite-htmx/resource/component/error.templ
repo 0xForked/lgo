@@ -1,0 +1,9 @@
+package component
+
+templ Error(err error) {
+    <div>
+        Sometime went wrong:
+        { err.Error() }
+        <button>refresh</button>
+    </div>
+}

@@ -1,0 +1,24 @@
+package layout
+
+templ AppLayout() {
+    <!doctype html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+            <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <title>Person | Go CRUD HTMX</title>
+        </head>
+        <body>
+            <header class="w-full flex my-12">
+                <h1 class="text-3xl font-bold mx-auto">
+                    Person CRUD
+                </h1>
+            </header>
+            {children...}
+        </body>
+    </html>
+}

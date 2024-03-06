@@ -1,0 +1,53 @@
+package resource
+
+import "github.com/0xForked/crud-nethttp-sqlite-htmx/resource/layout"
+import "github.com/0xForked/crud-nethttp-sqlite-htmx/resource/component"
+import "github.com/0xForked/crud-nethttp-sqlite-htmx/model"
+
+templ Home(persons []model.Person, err error) {
+    @layout.AppLayout() {
+        <main class="w-full flex my-12">
+            if err != nil {
+               @component.Error(err)
+            } else {
+                @component.Table(persons)
+            }
+            @component.Fab()
+            @component.Modal()
+        </main>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // Open modal when the button is clicked
+                $('#open-modal').on('click', function(){
+                    if ($('#action-modal').hasClass('hidden')) {
+                        $('#action-modal').removeClass('hidden');
+                    }
+                });
+
+                // Close modal when the button is clicked
+                $('#close-action-modal').on('click', function(){
+                    if (!$('#action-modal').hasClass('hidden')) {
+                        $('#action-modal').addClass('hidden');
+                    }
+                });
+
+                // Close modal when the save button is clicked
+                $('#save-action-modal').on('click', function(){
+                    if (!$('#action-modal').hasClass('hidden')) {
+                        setTimeout(() => {
+                            $('#action-modal').addClass('hidden');
+                            window.location.href = "/"
+                        }, 150);
+                    }
+                });
+            });
+        </script>
+
+        <style type="text/css">
+            tr.htmx-swapping td {
+              opacity: 0;
+              transition: opacity 0.5s ease-out;
+            }
+        </style>
+    }
+}
